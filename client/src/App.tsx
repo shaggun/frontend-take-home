@@ -3,6 +3,7 @@ import { Theme, Container, Tabs, Box } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import './App.css';
 import UsersTab from './components/Users/UsersTab';
+import RolesTab from './components/Roles/RolesTab';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastProvider } from './context/ToastContext';
 
@@ -34,7 +35,7 @@ function App() {
                     <UsersTab />
                   </Tabs.Content>
                   <Tabs.Content value="roles">
-
+                    <RolesTab />
                   </Tabs.Content>
                 </Box>
               </Tabs.Root>
