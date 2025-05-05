@@ -1,0 +1,22 @@
+.tableRow {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tableRow:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.tableCell {
+  vertical-align: middle !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
