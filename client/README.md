@@ -65,14 +65,15 @@ The application implements pagination through:
 
 - `usePagination` hook that manages pagination state and logic
 - `TablePaginationRow` component that renders pagination controls
+- `Page X of Y` Visual feedback that provides improved UX, users immediately understand where they are in the dataset and how much more data exists.
 
 ## Nice to Have
 
 Improvements that could enhance the application:
 
-1. **Dark Mode Support**: Implement a theme switcher with dark mode support
+1. **Dark Mode Support**: Implement a theme switcher with dark mode support.
 2. **Improve focus management**: When you submit a form, the focus moves to the URL bar instead of staying on an element in the page, this is related to how browsers handle form submission and page reloading.
-3. **Add error boundary**: Handle runtime errors to prevent entire app from crashing on production.
+3. **Add error boundary**: Handle runtime errors to prevent entire React app from crashing on production.
 
 ## Getting Started
 
