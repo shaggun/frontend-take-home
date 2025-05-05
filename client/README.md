@@ -65,7 +65,7 @@ The application implements pagination through:
 
 - `usePagination` hook that manages pagination state and logic
 - `TablePaginationRow` component that renders pagination controls
-- `Page X of Y` Visual feedback that provides improved UX, users immediately understand where they are in the dataset and how much more data exists.
+- `Page X of Y` provides visual feedback that improves UX by helping users immediately understand where they are in the dataset and how much more data is available.
 
 ## Nice to Have
 
