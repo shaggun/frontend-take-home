@@ -45,6 +45,7 @@ A React application for managing WorkOS users and roles with a focus on error ha
 - **Toast Notifications**: Toast system for success/error visual feedback
 - **Test Coverage**: Unit tests for components
 - **Custom Hooks**: Reusable logic for common tasks like debouncing and pagination
+- **Lighthouse score of 96 for accessibility**: Use of ARIA attributes correctly when needed, keyboard navigation, adequate color contrast.
 
 ## Error Handling Strategy
 
@@ -70,8 +71,8 @@ The application implements pagination through:
 Improvements that could enhance the application:
 
 1. **Dark Mode Support**: Implement a theme switcher with dark mode support
-2. **Improve focus management**: Keep focus on page on data submission
-3. **Add error boundary**: Handle runtime errors to prevent entire app from crashing on production
+2. **Improve focus management**: When you submit a form, the focus moves to the URL bar instead of staying on an element in the page, this is related to how browsers handle form submission and page reloading.
+3. **Add error boundary**: Handle runtime errors to prevent entire app from crashing on production.
 
 ## Getting Started
 
