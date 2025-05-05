@@ -32,6 +32,11 @@ const RolesTable: React.FC<RolesTableProps> = ({ rolesData, isLoading, paginatio
   }
 
   if (rolesData.length === 0) {
+    // If there are no users and pagination data indicates there are previous pages, go to the previous page
+    if (paginationData && paginationData.hasPrev) {
+      paginationData.onPrevPage();
+      return null;
+    }
     return (
       <Flex py="4" justify="center">
         <Text>No roles found.</Text>
