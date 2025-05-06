@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { userService } from '../../api/apiService';
 import styles from '../../styles/DropdownMenu.module.css';
 import calloutStyles from '../../styles/Callout.module.css';
+import dialogStyles from '../../styles/Dialog.module.css';
 import ErrorCallout from '../common/ErrorCallout';
 import { useToast } from '../../context/ToastContext';
 
@@ -125,8 +126,8 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
 
       {/* Confirmation Dialog */}
       <Dialog.Root open={confirmDeleteOpen} onOpenChange={setConfirmDeleteOpen}>
-        <Dialog.Content>
-          <Dialog.Title>Delete User</Dialog.Title>
+        <Dialog.Content className={dialogStyles.dialogContent}>
+          <Dialog.Title>Delete user</Dialog.Title>
           <Dialog.Description size="2" color="gray" highContrast>
             <Text as="span">Are you sure? The user <Strong>{userName}</Strong> will be permanently deleted.</Text>
           </Dialog.Description>
