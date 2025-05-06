@@ -141,8 +141,9 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
 
           <Flex gap="3" mt="4" justify="end">
             <Button
-              variant="outline"
+              variant="surface"
               color="gray"
+              highContrast
               onClick={() => setConfirmDeleteOpen(false)}
               disabled={deleteUserMutation.isLoading}
             >

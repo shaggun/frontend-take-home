@@ -24,7 +24,7 @@ const TablePaginationRow: React.FC<TablePaginationRowProps> = ({
           </Text>
           <Flex gap="2">
             <Button
-              variant={!paginationData.hasPrev || isLoading ? "soft" : "outline"}
+              variant={!paginationData.hasPrev || isLoading ? "soft" : "surface"}
               color="gray"
               size="1"
               disabled={!paginationData.hasPrev || isLoading}
@@ -35,7 +35,7 @@ const TablePaginationRow: React.FC<TablePaginationRowProps> = ({
               Previous
             </Button>
             <Button
-              variant={!paginationData.hasNext || isLoading ? "soft" : "outline"}
+              variant={!paginationData.hasNext || isLoading ? "soft" : "surface"}
               color="gray"
               size="1"
               disabled={!paginationData.hasNext || isLoading}

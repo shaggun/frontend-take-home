@@ -317,7 +317,9 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
 
                 <Flex gap="3" mt="4" justify="end">
                   <Button
-                    variant="outline"
+                    variant="surface"
+                    color="gray"
+                    highContrast
                     disabled={updateRoleMutation.isLoading}
                     onClick={onCancel}
                     type="button"
