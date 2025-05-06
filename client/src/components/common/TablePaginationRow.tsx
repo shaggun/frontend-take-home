@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Text, Flex } from '@radix-ui/themes';
+import { Table, Button, Text, Flex, Spinner } from '@radix-ui/themes';
 import { PaginationData } from '../../types';
 
 interface TablePaginationRowProps {
@@ -43,6 +43,7 @@ const TablePaginationRow: React.FC<TablePaginationRowProps> = ({
               aria-label="Next page"
               highContrast
             >
+              <Spinner size="1" loading={isLoading} />
               Next
             </Button>
           </Flex>
