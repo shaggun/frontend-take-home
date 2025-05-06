@@ -28,9 +28,20 @@ jest.mock('@radix-ui/themes', () => ({
       data-testid="button-mock"
       disabled={props.disabled}
       onClick={props.onClick}
+      aria-label={props['aria-label']}
     >
       {props.children}
     </button>
+  ),
+  // Added Spinner component mock
+  Spinner: (props: any) => (
+    <span
+      data-testid="spinner-mock"
+      data-size={props.size}
+      style={{ display: props.loading ? 'inline' : 'none' }}
+    >
+      Loading...
+    </span>
   ),
 }));
 
@@ -76,7 +87,13 @@ describe('TablePaginationRow', () => {
     const buttons = screen.getAllByTestId('button-mock');
     expect(buttons.length).toBe(2);
     expect(buttons[0].textContent).toBe('Previous');
-    expect(buttons[1].textContent).toBe('Next');
+
+    // Account for the spinner and "Next" text in the next button
+    expect(buttons[1].textContent).toContain('Next');
+
+    // Verify spinner is not visible when not loading
+    const spinner = screen.getByTestId('spinner-mock');
+    expect(spinner.style.display).toBe('none');
 
     // Test button click handlers
     buttons[0].click();
@@ -142,5 +159,9 @@ describe('TablePaginationRow', () => {
     const buttons = screen.getAllByTestId('button-mock');
     expect(buttons[0]).toHaveAttribute('disabled');
     expect(buttons[1]).toHaveAttribute('disabled');
+
+    // Verify spinner is visible when loading
+    const spinner = screen.getByTestId('spinner-mock');
+    expect(spinner.style.display).toBe('inline');
   });
 });
