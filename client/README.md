@@ -4,7 +4,7 @@ A React application for managing WorkOS users and roles with a focus on error ha
 
 ## Stack
 
-- React 18.3.1
+- React
 - TypeScript
 - Radix UI (for UI components)
 - React Query (for data fetching)
@@ -39,20 +39,20 @@ A React application for managing WorkOS users and roles with a focus on error ha
 ## Key Features
 
 - **CSS Modules**: Modular styling approach for better organization and maintenance
-  > Note: I use camelCase for CSS classes, inspired by Radix examples demonstrating custom styling. Additionally, since CSS Modules expose class names as JavaScript object properties, camelCase is both ergonomic and a more natural choice for this particular case.
+  > Note: I use camelCase for CSS classes, inspired by Radix examples demonstrating custom styling. Additionally, since CSS Modules expose class names as JavaScript object properties, camelCase is a more natural choice for this particular case because of the dot notation access.
 - **Skeleton Loading**: Reusable skeleton components for consistent loading states
 - **Form Handling**: Uses React Hook Form for more robust form validation and management
 - **Error Handling**: Handles API/network errors with retry functionality
 - **Toast Notifications**: Toast system for success/error visual feedback
 - **Test Coverage**: Unit tests for components
 - **Custom Hooks**: Reusable logic for common tasks like debouncing and pagination
-- **Lighthouse score of 96 for accessibility**: Use of ARIA attributes correctly when needed, keyboard navigation, adequate color contrast.
+- **Lighthouse score of 96 for accessibility**: Use of ARIA attributes correctly when needed, keyboard navigation, etc.
 
 ## Error Handling Strategy
 
 1. **API/Network Errors**: Handled with `ErrorWithRetry` component that shows:
 
-   - User-friendly error messages
+   - User friendly error messages
    - Retry button for failed API calls
    - Loading state during retry attempts
 
