@@ -39,6 +39,7 @@ A React application for managing WorkOS users and roles with a focus on error ha
 ## Key Features
 
 - **CSS Modules**: Modular styling approach for better organization and maintenance
+  > Note: I use camelCase for CSS classes, inspired by Radix examples demonstrating custom styling. Additionally, since CSS Modules expose class names as JavaScript object properties, camelCase is both ergonomic and a more natural choice for this particular case.
 - **Skeleton Loading**: Reusable skeleton components for consistent loading states
 - **Form Handling**: Uses React Hook Form for more robust form validation and management
 - **Error Handling**: Handles API/network errors with retry functionality
