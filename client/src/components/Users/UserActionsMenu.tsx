@@ -4,7 +4,7 @@ import { Button, Flex, Dialog, Spinner, Text, Strong } from '@radix-ui/themes';
 import { DotsHorizontalIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { useMutation, useQueryClient } from 'react-query';
 import { userService } from '../../api/apiService';
-import styles from '../../styles/DropdownMenu.module.css';
+import dropdownStyles from '../../styles/DropdownMenu.module.css';
 import calloutStyles from '../../styles/Callout.module.css';
 import dialogStyles from '../../styles/Dialog.module.css';
 import ErrorCallout from '../common/ErrorCallout';
@@ -105,17 +105,17 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
 
         <DropdownMenu.Portal>
           <DropdownMenu.Content
-            className={styles.dropdownContent}
+            className={dropdownStyles.dropdownContent}
             align="end"
             sideOffset={5}
           >
             <DropdownMenu.Item
-              className={styles.dropdownItem}
+              className={dropdownStyles.dropdownItem}
             >
               Edit user
             </DropdownMenu.Item>
             <DropdownMenu.Item
-              className={styles.dropdownItem}
+              className={dropdownStyles.dropdownItem}
               onSelect={() => setConfirmDeleteOpen(true)}
             >
               Delete user
