@@ -326,6 +326,7 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
                     disabled={updateRoleMutation.isLoading}
                     onClick={onCancel}
                     weight="bold"
+                    type="button" //Prevents form submission on cancel
                   >
                     Cancel
                   </Button>
