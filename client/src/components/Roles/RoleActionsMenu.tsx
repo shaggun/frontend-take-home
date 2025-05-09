@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Dialog, Button, Flex, Spinner, Text } from '@radix-ui/themes';
+import { Dialog, Flex, Spinner, Text } from '@radix-ui/themes';
 import { DotsHorizontalIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { useMutation, useQueryClient } from 'react-query';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -9,6 +9,7 @@ import { Role } from '../../types';
 import { FormField, FormTextArea } from '../common/Form';
 import { ApiError } from '../../api/apiService';
 import ErrorCallout from '../common/ErrorCallout';
+import Button from '../common/Button';
 import calloutStyles from '../../styles/Callout.module.css';
 import dropdownStyles from '../../styles/DropdownMenu.module.css';
 import { useToast } from '../../context/ToastContext';
@@ -19,6 +20,7 @@ const RetryButton: React.FC<{ isLoading: boolean; onClick: () => void }> = ({ is
     onClick={onClick}
     disabled={isLoading}
     color="red"
+    weight="bold"
   >
     {isLoading ? (
       <>
@@ -38,6 +40,7 @@ const SaveButton: React.FC<{ isLoading: boolean }> = ({ isLoading }) => (
   <Button
     type="submit"
     disabled={isLoading}
+    weight="bold"
   >
     {isLoading ? (
       <>
@@ -322,7 +325,7 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
                     highContrast
                     disabled={updateRoleMutation.isLoading}
                     onClick={onCancel}
-                    type="button"
+                    weight="bold"
                   >
                     Cancel
                   </Button>

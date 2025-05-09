@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Box, Button, Flex, TextField } from '@radix-ui/themes';
+import { Box, Flex, TextField } from '@radix-ui/themes';
 import { MagnifyingGlassIcon, PlusIcon } from '@radix-ui/react-icons';
 import RolesTable from './RolesTable';
 import { roleService } from '../../api/apiService';
 import { PagedData, Role, PaginationData } from '../../types';
 import ErrorWithRetry from '../common/ErrorWithRetry';
 import { useDebounce, usePagination } from '../../hooks';
+import Button from '../common/Button';
 import { useToast } from '../../context/ToastContext';
 
 const RolesTab: React.FC = () => {
@@ -81,7 +82,7 @@ const RolesTab: React.FC = () => {
             </TextField.Root>
           </Box>
           <Box flexGrow="0">
-            <Button>
+            <Button weight="bold">
               <PlusIcon height="16" width="16" />
               Create role
             </Button>

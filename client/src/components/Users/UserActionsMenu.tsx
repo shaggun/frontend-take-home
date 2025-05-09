@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Button, Flex, Dialog, Spinner, Text, Strong } from '@radix-ui/themes';
+import { Flex, Dialog, Spinner, Text, Strong } from '@radix-ui/themes';
 import { DotsHorizontalIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { useMutation, useQueryClient } from 'react-query';
 import { userService } from '../../api/apiService';
@@ -8,6 +8,7 @@ import dropdownStyles from '../../styles/DropdownMenu.module.css';
 import calloutStyles from '../../styles/Callout.module.css';
 import dialogStyles from '../../styles/Dialog.module.css';
 import ErrorCallout from '../common/ErrorCallout';
+import Button from '../common/Button';
 import { useToast } from '../../context/ToastContext';
 
 // Action button components for better readability
@@ -17,6 +18,7 @@ const RetryButton: React.FC<{ isLoading: boolean; onClick: () => void }> = ({ is
     color="red"
     onClick={onClick}
     disabled={isLoading}
+    weight="bold"
   >
     {isLoading ? (
       <>
@@ -38,6 +40,7 @@ const DeleteButton: React.FC<{ isLoading: boolean; onClick: () => void }> = ({ i
     color="red"
     onClick={onClick}
     disabled={isLoading}
+    weight="bold"
   >
     {isLoading ? (
       <>
@@ -146,6 +149,7 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
               highContrast
               onClick={() => setConfirmDeleteOpen(false)}
               disabled={deleteUserMutation.isLoading}
+              weight="bold"
             >
               Cancel
             </Button>

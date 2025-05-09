@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Box, Flex, Button, TextField } from '@radix-ui/themes';
+import { Box, Flex, TextField } from '@radix-ui/themes';
 import { MagnifyingGlassIcon, PlusIcon } from '@radix-ui/react-icons';
 import UsersTable from './UsersTable';
 import { userService } from '../../api/apiService';
@@ -8,6 +8,7 @@ import { PagedData, User, PaginationData } from '../../types';
 import ErrorWithRetry from '../common/ErrorWithRetry';
 import { useDebounce, usePagination } from '../../hooks';
 import { useToast } from '../../context/ToastContext';
+import Button from '../common/Button';
 
 const UsersTab: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,7 +82,7 @@ const UsersTab: React.FC = () => {
             </TextField.Root>
           </Box>
           <Box flexGrow="0">
-            <Button>
+            <Button weight="bold">
               <PlusIcon height="16" width="16" />
               Add user
             </Button>

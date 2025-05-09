@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Spinner, Flex,Callout } from '@radix-ui/themes';
+import { Spinner, Flex,Callout } from '@radix-ui/themes';
 import { ReloadIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import Button from './Button';
 import styles from '../../styles/Callout.module.css';
 
 
@@ -40,6 +41,7 @@ const ErrorWithRetry: React.FC<ErrorWithRetryProps> = ({
         disabled={isRetrying}
         aria-disabled={isRetrying}
         aria-label={isRetrying ? "Retrying operation" : "Retry operation"}
+        weight="bold"
       >
         {isRetrying ? (
           <>
