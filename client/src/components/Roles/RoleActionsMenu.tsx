@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Dialog, Flex, Spinner, Text } from '@radix-ui/themes';
+import { Dialog, Flex, Spinner, Text, DropdownMenu } from '@radix-ui/themes';
 import { DotsHorizontalIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { useMutation, useQueryClient } from 'react-query';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -214,7 +213,7 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
   return (
     <>
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild>
+        <DropdownMenu.Trigger>
           <Button
             variant="ghost"
             radius="full"
@@ -227,42 +226,43 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
           </Button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content
-            className={dropdownStyles.dropdownContent}
-            align="end"
-            sideOffset={5}
+        <DropdownMenu.Content
+          className={dropdownStyles.dropdownContent}
+          align="end"
+          sideOffset={5}
+          color="gray"
+          variant="soft"
+          highContrast
+        >
+          <DropdownMenu.Item
+            className={dropdownStyles.dropdownItem}
+            onSelect={() => setOpen(true)}
           >
+            Edit role
+          </DropdownMenu.Item>
+          {!role.isDefault && (
             <DropdownMenu.Item
               className={dropdownStyles.dropdownItem}
-              onSelect={() => setOpen(true)}
+              onSelect={() => setAsDefaultMutation.mutate({ isDefault: true })}
+              disabled={setAsDefaultMutation.isLoading}
             >
-              Edit role
+              Set as default
             </DropdownMenu.Item>
-            {!role.isDefault && (
-              <DropdownMenu.Item
-                className={dropdownStyles.dropdownItem}
-                onSelect={() => setAsDefaultMutation.mutate({ isDefault: true })}
-                disabled={setAsDefaultMutation.isLoading}
-              >
-                Set as default
-              </DropdownMenu.Item>
-            )}
-            {role.isDefault && (
-              <DropdownMenu.Item
-                className={dropdownStyles.dropdownItem}
-                disabled={true}
-              >
-                Default role
-              </DropdownMenu.Item>
-            )}
+          )}
+          {role.isDefault && (
             <DropdownMenu.Item
               className={dropdownStyles.dropdownItem}
+              disabled={true}
             >
-              Delete role
+              Default role
             </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
+          )}
+          <DropdownMenu.Item
+            className={dropdownStyles.dropdownItem}
+          >
+            Delete role
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
       </DropdownMenu.Root>
 
       {/* Edition Dialog */}

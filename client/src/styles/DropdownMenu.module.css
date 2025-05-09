@@ -1,31 +1,8 @@
 .dropdownItem {
-  all: unset;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  height: 32px;
-  padding: 4px 12px;
-  position: relative;
-  user-select: none;
   cursor: pointer;
-  color: var(--gray-12);
 }
 
 .dropdownContent {
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  background-color: white;
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
   width: 143px;
 }
 
-.dropdownItem[data-highlighted] {
-  background-color: var(--gray-3);
-}
-
-.dropdownItem[data-disabled] {
-  color: var(--gray-9);
-  cursor: not-allowed;
-}

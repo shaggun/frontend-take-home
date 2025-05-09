@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Flex, Dialog, Spinner, Text, Strong } from '@radix-ui/themes';
+import { Flex, Dialog, Spinner, Text, Strong, DropdownMenu } from '@radix-ui/themes';
 import { DotsHorizontalIcon, ReloadIcon } from '@radix-ui/react-icons';
 import { useMutation, useQueryClient } from 'react-query';
 import { userService } from '../../api/apiService';
@@ -93,7 +92,7 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
   return (
     <>
       <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild>
+        <DropdownMenu.Trigger>
           <Button
             variant="ghost"
             radius="full"
@@ -106,25 +105,26 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
           </Button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content
-            className={dropdownStyles.dropdownContent}
-            align="end"
-            sideOffset={5}
+        <DropdownMenu.Content
+          className={dropdownStyles.dropdownContent}
+          align="end"
+          sideOffset={5}
+          color="gray"
+          variant="soft"
+          highContrast
+        >
+          <DropdownMenu.Item
+            className={dropdownStyles.dropdownItem}
           >
-            <DropdownMenu.Item
-              className={dropdownStyles.dropdownItem}
-            >
-              Edit user
-            </DropdownMenu.Item>
-            <DropdownMenu.Item
-              className={dropdownStyles.dropdownItem}
-              onSelect={() => setConfirmDeleteOpen(true)}
-            >
-              Delete user
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
+            Edit user
+          </DropdownMenu.Item>
+          <DropdownMenu.Item
+            className={dropdownStyles.dropdownItem}
+            onSelect={() => setConfirmDeleteOpen(true)}
+          >
+            Delete user
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
       </DropdownMenu.Root>
 
       {/* Confirmation Dialog */}
