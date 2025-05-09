@@ -17,6 +17,7 @@ A React application for managing WorkOS users and roles with a focus on error ha
   /api            - API service functions and error handling
   /components     - React components
     /common       - Reusable components
+      /Button     - Custom Button component extending Radix UI Button with additional styling props
       /Form       - Reusable form components
       /Skeleton   - Skeleton loading components
       ErrorCallout.tsx    - Error callout component
