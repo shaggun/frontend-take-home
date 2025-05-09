@@ -6,3 +6,6 @@
   width: 143px;
 }
 
+.dropdownItem[data-disabled] {
+  cursor: not-allowed;
+}
