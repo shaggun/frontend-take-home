@@ -68,16 +68,46 @@ const UserActionsMenu: React.FC<UserActionsMenuProps> = ({ userId, userName }) =
   const deleteUserMutation = useMutation(
     () => userService.deleteUser(userId),
     {
+      // Apply optimistic update
+      onMutate: async () => {
+        // Cancel any outgoing refetches to avoid overwriting optimistic update
+        await queryClient.cancelQueries(['users']);
+
+        // Snapshot the previous value
+        const previousUsers = queryClient.getQueryData<any>(['users']);
+
+        // Optimistically update the cache
+        queryClient.setQueryData(['users'], (old: any) => {
+          // Remove the user from the data array
+          if (old && old.data) {
+            return {
+              ...old,
+              data: old.data.filter((user: any) => user.id !== userId)
+            };
+          }
+          return old;
+        });
+
+        return { previousUsers };
+      },
       onSuccess: () => {
         // Invalidate and refetch users query to update the UI
-        queryClient.invalidateQueries('users');
+        queryClient.invalidateQueries(['users']);
         setConfirmDeleteOpen(false);
         setError(null);
         showToast('success', `User ${userName} has been successfully deleted.`);
       },
-      onError: (error: any) => {
+      onError: (error: any, _, context: any) => {
+        // If the mutation fails, revert to the previous value
+        if (context && context.previousUsers) {
+          queryClient.setQueryData(['users'], context.previousUsers);
+        }
         setError(error.message || 'Something went wrong. Please try again.');
-      }
+      },
+      onSettled: () => {
+        // Always refetch after error or success to make server state the source of truth
+        queryClient.invalidateQueries(['users']);
+      },
     }
   );
 

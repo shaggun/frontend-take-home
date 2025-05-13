@@ -41,16 +41,27 @@ const UsersTab: React.FC = () => {
     refetch,
     isFetching,
   } = useQuery<PagedData<User>, Error>(
-    ['users', debouncedSearchTerm, currentPage],
+    ['users'],
     () => userService.getUsers(debouncedSearchTerm, currentPage),
     {
       keepPreviousData: true,
       retry: false, // Disable automatic retries since we're handling it manually
+      refetchOnWindowFocus: false,
       onError: (err) => {
         showToast('error', `Failed to load users: ${err.message}`);
       }
     }
   );
+  
+  // Effect to refetch when search term or page changes
+  useEffect(() => {
+    // The slight delay here prevents an immediate refetch on mount
+    const timer = setTimeout(() => {
+      refetch();
+    }, 10); // Very small delay to avoid double fetching
+    
+    return () => clearTimeout(timer);
+  }, [debouncedSearchTerm, currentPage, refetch]);
 
   // Handle pagination
   const handlePreviousPage = () => {

@@ -101,7 +101,7 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
       // Apply optimistic update
       onMutate: async () => {
         // Cancel any outgoing refetches to avoid overwriting optimistic update
-        await queryClient.cancelQueries('roles');
+        await queryClient.cancelQueries(['roles']);
 
         // Snapshot the previous value
         const previousRoles = queryClient.getQueryData<any>(['roles']);
@@ -126,8 +126,8 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
         return { previousRoles };
       },
       onSuccess: () => {
-        // Invalidate and refetch roles query to ensure data consistency
-        queryClient.invalidateQueries('roles');
+        // Simple invalidation with the base query key
+        queryClient.invalidateQueries(['roles']);
         setDefaultError(null);
         showToast('success', `Role ${role.name} set as default successfully`);
       },
@@ -139,8 +139,8 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
         setDefaultError(error.message || 'Failed to set role as default. Please try again.');
       },
       onSettled: () => {
-        // Always refetch after error or success to make server state the source of truth
-        queryClient.invalidateQueries('roles');
+        // Simple invalidation with the base query key
+        queryClient.invalidateQueries(['roles']);
       },
     }
   );
@@ -152,7 +152,7 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
       // Apply optimistic update
       onMutate: async (formData) => {
         // Cancel any outgoing refetches to avoid overwriting optimistic update
-        await queryClient.cancelQueries('roles');
+        await queryClient.cancelQueries(['roles']);
 
         // Snapshot the previous value
         const previousRoles = queryClient.getQueryData<any>(['roles']);
@@ -176,8 +176,8 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
         return { previousRoles };
       },
       onSuccess: () => {
-        // Invalidate and refetch roles query to ensure data consistency
-        queryClient.invalidateQueries('roles');
+        // Simple invalidation with the base query key
+        queryClient.invalidateQueries(['roles']);
         setOpen(false);
         setError(null);
         showToast('success', `Role ${role.name} updated successfully`);
@@ -190,8 +190,8 @@ const RoleActionsMenu: React.FC<RoleActionsMenuProps> = ({ role }) => {
         setError(error.message || 'Something went wrong. Please try again.');
       },
       onSettled: () => {
-        // Always refetch after error or success to make server state the source of truth
-        queryClient.invalidateQueries('roles');
+        // Simple invalidation with the base query key
+        queryClient.invalidateQueries(['roles']);
       },
     }
   );

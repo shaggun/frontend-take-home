@@ -32,7 +32,7 @@ const RolesTab: React.FC = () => {
     setSearchTerm(e.target.value);
   };
 
-  // Fetch roles data
+  // Fetch roles data - use a base query key for immediate updates
   const {
     data: rolesData,
     isLoading,
@@ -41,16 +41,29 @@ const RolesTab: React.FC = () => {
     refetch,
     isFetching,
   } = useQuery<PagedData<Role>, Error>(
-    ['roles', debouncedSearchTerm, currentPage],
+    ['roles'],
     () => roleService.getRoles(debouncedSearchTerm, currentPage),
     {
       keepPreviousData: true,
       retry: false, // Disable automatic retries since we're handling it manually
+      refetchOnWindowFocus: false,
+      // The key change: manually trigger refetch when search or page changes
+      // This avoids the debounce delay affecting direct updates to roles
       onError: (err) => {
         showToast('error', `Failed to load roles: ${err.message}`);
       }
     }
   );
+  
+  // Effect to refetch when search term or page changes
+  useEffect(() => {
+    // The slight delay here prevents an immediate refetch on mount
+    const timer = setTimeout(() => {
+      refetch();
+    }, 10); // Very small delay to avoid double fetching
+    
+    return () => clearTimeout(timer);
+  }, [debouncedSearchTerm, currentPage, refetch]);
 
   // Handle pagination
   const handlePreviousPage = () => {
